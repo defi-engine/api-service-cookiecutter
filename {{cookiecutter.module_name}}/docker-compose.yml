@@ -1,0 +1,14 @@
+version: "3.6"
+
+
+services:
+  defi-postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER={{cookiecutter.module_name}}_db
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_SERVER=defi-postgres
+      - POSTGRES_DB={{cookiecutter.module_name}}_db
+      - POSTGRES_PORT=5432
+    ports:
+      - 5432:5432

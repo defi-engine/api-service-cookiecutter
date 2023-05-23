@@ -1,0 +1,18 @@
+{
+  "your_name": "",
+  "your_email": "",
+  "module_display_name": "API Service",
+  "module_description": "{{ cookiecutter.module_display_name }} Module",
+  "module_name": "{{ cookiecutter.module_display_name|lower|replace(' ', '-') }}",
+  "module_name_underscored": "{{ cookiecutter.module_name|replace('-', '_') }}",
+  "module_name_camelcase": "{{ cookiecutter.module_display_name|title|replace(' ', '') }}",
+  "module_git_user" : "git",
+  "module_git_repo" : [
+    "git@github.com:defi-engine/{{ cookiecutter.module_name }}.git",
+    "https://github.com/defi-engine/{{ cookiecutter.module_name }}.git"
+  ],
+  "license": ["MIT"],
+  "_copy_without_render": [
+        "*.html"
+    ]
+}
