@@ -1,0 +1,116 @@
+[tool.pycln]
+all = true
+
+[tool.ruff]
+# Enable pycodestyle (`E`) and Pyflakes (`F`) codes by default.
+select = ["E", "F", "B", "I"]
+ignore = []
+
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = ["A", "B", "C", "D", "E", "F", "G", "I", "N", "Q", "S", "T", "W", "ANN", "ARG", "BLE", "COM", "DJ", "DTZ", "EM", "ERA", "EXE", "FBT", "ICN", "INP", "ISC", "NPY", "PD", "PGH", "PIE", "PL", "PT", "PTH", "PYI", "RET", "RSE", "RUF", "SIM", "SLF", "TCH", "TID", "TRY", "UP", "YTT"]
+unfixable = []
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+per-file-ignores = {}
+
+line-length = 110
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+target-version = "py311"
+
+[tool.bandit]
+exclude_dirs = [".venv", "tests"]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-p no:warnings --ignore=.venv --asyncio-mode=auto --cov-report=term-missing --cov={{cookiecutter.module_name_underscored}}/app"
+python_files = "tests.py test_*.py *_tests.py"
+python_functions = "test_*"
+
+[tool.coverage.run]
+omit = [".venv/*", "tests/*"]
+
+[tool.coverage.html]
+directory = 'coverage_html_report'
+
+[tool.coverage.report]
+fail_under = 77
+exclude_lines = [
+    'pragma: no cover',
+    'def __repr__',
+    'if self\\.debug',
+    'raise AssertionError',
+    'raise NotImplementedError',
+    'if 0:',
+    'if __name__ == .__main__.:',
+    '@(abc\\.)?abstractmethod',
+]
+
+[tool.poetry]
+name = "{{cookiecutter.module_name}}"
+version = "0.1.0"
+description = "{{cookiecutter.module_description}}"
+authors = ["{{ cookiecutter.your_name }} <{{cookiecutter.your_email}}>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+wheel = "^0.38.4"
+fastapi = "^0.95.0"
+uvicorn = "^0.20.0"
+fastapi-pagination = "^0.11"
+fastapi-babel = "^0.0.8"
+pybabel = "^0.0.0.dev0"
+tortoise-orm = {extras = ["asyncpg"], version = "^0.18.1"}
+aerich = "^0.7.1"
+pydantic = {extras = ["email", "dotenv"], version = "^1.10.2"}
+asyncpg = "^0.27.0"
+uvloop = "^0.17.0"
+loguru = "^0.7.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.0"
+coverage = {extras = ["toml"], version = "^7.2.2"}
+pytest-asyncio = "^0.20.2"
+pytest-cov = "^4.0.0"
+ruff = "^0.0.269"
+httpx = "^0.23.1"
+ipython = "^8.13.2"
+
+[tool.aerich]
+tortoise_orm = "{{cookiecutter.module_name_underscored}}.app.core.config.TORTOISE_ORM"
+location = "./migrations"
+src_folder = "./."
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+app = "{{cookiecutter.module_name_underscored}}.app.main:start"

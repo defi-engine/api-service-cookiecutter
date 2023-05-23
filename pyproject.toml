@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "api-service-cookiecutter"
+version = "0.1.0"
+description = "Cookie cutter template for api service"
+authors = ["RSkrzydelski <r.skrzydelski@gmail.com>"]
+readme = "README.md"
+packages = [{include = "api_service_cookiecutter"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+cookiecutter = "^2.1.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
