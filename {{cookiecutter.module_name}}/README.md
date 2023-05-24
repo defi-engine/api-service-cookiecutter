@@ -2,7 +2,7 @@
 
 **MODULE OVERVIEW**:
 
-<a href="https://github.com/defi-engine/defie-engine/blob/master/LICENSE">
+<a href="[https://github.com/defi-engine/defie-engine/blob/master/LICENSE](https://github.com/defi-engine/api-service-cookiecutter/blob/dev/%7B%7Bcookiecutter.module_name%7D%7D/LICENSE)">
   <img alt="License" src="https://img.shields.io/github/license/defi-engine/defi-engine">
 </a>
 
